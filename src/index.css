@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* OTRN — Silent Perimeter palette (light/bone) */
+    --background: 36 24% 95%;       /* bone paper #F5F3EF */
+    --foreground: 225 30% 12%;      /* deep ink */
+
+    --card: 40 30% 97%;             /* warm off-white */
+    --card-foreground: 225 30% 12%;
+
+    --popover: 40 30% 97%;
+    --popover-foreground: 225 30% 12%;
+
+    --primary: 230 55% 22%;         /* deep enterprise indigo */
+    --primary-foreground: 36 24% 96%;
+
+    --secondary: 36 16% 90%;
+    --secondary-foreground: 225 30% 12%;
+
+    --muted: 36 18% 92%;
+    --muted-foreground: 225 10% 38%;
+
+    --accent: 32 45% 58%;           /* warm sand accent */
+    --accent-foreground: 225 30% 12%;
+
+    --destructive: 6 55% 45%;
+    --destructive-foreground: 36 24% 96%;
+
+    --border: 36 14% 84%;
+    --border-strong: 36 12% 72%;
+    --input: 36 14% 84%;
+    --ring: 230 55% 22%;
+
+    --radius: 0.5rem;
+
+    /* OTRN — surfaces (bone → warm gray) */
+    --bg0: 36 24% 95%;
+    --bg1: 40 30% 97%;
+    --bg2: 36 20% 93%;
+    --bg3: 36 16% 88%;
+    --bg4: 36 12% 80%;
+    --bg5: 36 10% 70%;
+
+    /* OTRN status — muted, editorial */
+    --teal: 175 40% 32%;
+    --teal-muted: 175 30% 88%;
+    --teal-subtle: 175 25% 94%;
+
+    --amber: 32 55% 48%;            /* warm sand */
+    --amber-muted: 32 45% 88%;
+    --amber-subtle: 32 40% 94%;
+
+    --danger: 6 55% 45%;
+    --danger-muted: 6 40% 90%;
+    --danger-subtle: 6 35% 95%;
+
+    --info: 222 45% 38%;            /* indigo info */
+    --info-muted: 222 35% 88%;
+    --info-subtle: 222 30% 94%;
+
+    --purple: 258 28% 42%;
+    --purple-muted: 258 22% 90%;
+
+    --pink: 12 45% 55%;
+    --pink-muted: 12 35% 92%;
+
+    --green: 145 28% 32%;
+    --green-muted: 145 22% 90%;
+
+    --t1: 225 30% 12%;
+    --t2: 225 18% 28%;
+    --t3: 225 10% 42%;
+    --t4: 225 8% 56%;
+
+    --border-accent: 230 55% 22% / 0.2;
+
+    --sidebar-background: 225 30% 10%;
+    --sidebar-foreground: 36 20% 88%;
+    --sidebar-primary: 32 45% 58%;
+    --sidebar-primary-foreground: 225 30% 10%;
+    --sidebar-accent: 225 22% 16%;
+    --sidebar-accent-foreground: 36 20% 92%;
+    --sidebar-border: 225 22% 16%;
+    --sidebar-ring: 32 45% 58%;
+
+    --success: 145 28% 32%;
+    --success-foreground: 36 24% 96%;
+    --warning: 32 55% 48%;
+    --warning-foreground: 225 30% 12%;
+    --kpi-blue: 230 55% 22%;
+    --kpi-green: 145 28% 32%;
+    --kpi-orange: 32 55% 48%;
+    --kpi-red: 6 55% 45%;
+    --kpi-purple: 258 28% 42%;
+
+    /* OTRN status palette (light) — sage / sand / ochre / terracotta / graphite */
+    --status-active:        160 30% 32%;   /* sage — đang trực */
+    --status-active-bg:     160 28% 90%;
+    --status-idle:          32 45% 48%;    /* warm sand — chờ / nghỉ phép */
+    --status-idle-bg:       32 45% 92%;
+    --status-warning:       38 60% 42%;    /* ochre — cảnh báo */
+    --status-warning-bg:    38 55% 90%;
+    --status-missing:       12 55% 42%;    /* terracotta — thiếu người */
+    --status-missing-bg:    12 50% 92%;
+    --status-resigned:      225 8% 46%;    /* graphite — đã nghỉ việc */
+    --status-resigned-bg:   225 10% 90%;
+
+    /* OTRN chart sequence (light) */
+    --chart-1: 230 55% 30%;     /* indigo */
+    --chart-2: 32 45% 50%;      /* sand */
+    --chart-3: 160 30% 35%;     /* sage */
+    --chart-4: 38 55% 45%;      /* ochre */
+    --chart-5: 12 50% 45%;      /* terracotta */
+    --chart-6: 225 12% 50%;     /* graphite */
+  }
+
+  .dark {
+    /* OTRN — Silent Perimeter (dark / midnight ink) */
+    --background: 225 28% 8%;
+    --foreground: 36 20% 92%;
+
+    --card: 225 24% 11%;
+    --card-foreground: 36 20% 92%;
+
+    --popover: 225 24% 11%;
+    --popover-foreground: 36 20% 92%;
+
+    --primary: 32 45% 60%;          /* warm sand pops on dark */
+    --primary-foreground: 225 28% 10%;
+
+    --secondary: 225 18% 16%;
+    --secondary-foreground: 36 20% 92%;
+
+    --muted: 225 18% 16%;
+    --muted-foreground: 36 10% 62%;
+
+    --accent: 32 45% 60%;
+    --accent-foreground: 225 28% 10%;
+
+    --destructive: 6 50% 42%;
+    --destructive-foreground: 36 20% 92%;
+
+    --border: 225 18% 18%;
+    --border-strong: 225 14% 26%;
+    --input: 225 18% 18%;
+    --ring: 32 45% 60%;
+
+    /* OTRN — surfaces (dark) */
+    --bg0: 225 28% 8%;
+    --bg1: 225 24% 11%;
+    --bg2: 225 22% 14%;
+    --bg3: 225 20% 18%;
+    --bg4: 225 16% 24%;
+    --bg5: 225 14% 30%;
+
+    --teal: 175 45% 55%;
+    --teal-muted: 175 45% 55% / 0.15;
+    --teal-subtle: 175 45% 55% / 0.08;
+
+    --amber: 32 55% 62%;
+    --amber-muted: 32 55% 62% / 0.15;
+    --amber-subtle: 32 55% 62% / 0.08;
+
+    --danger: 6 60% 58%;
+    --danger-muted: 6 60% 58% / 0.15;
+    --danger-subtle: 6 60% 58% / 0.08;
+
+    --info: 222 55% 65%;
+    --info-muted: 222 55% 65% / 0.15;
+    --info-subtle: 222 55% 65% / 0.08;
+
+    --purple: 258 35% 65%;
+    --purple-muted: 258 35% 65% / 0.15;
+
+    --pink: 12 50% 65%;
+    --pink-muted: 12 50% 65% / 0.15;
+
+    --green: 145 32% 55%;
+    --green-muted: 145 32% 55% / 0.15;
+
+    --t1: 36 20% 94%;
+    --t2: 36 12% 78%;
+    --t3: 36 8% 60%;
+    --t4: 36 6% 46%;
+
+    --border-accent: 32 45% 60% / 0.2;
+
+    --sidebar-background: 225 30% 6%;
+    --sidebar-foreground: 36 20% 88%;
+    --sidebar-primary: 32 45% 60%;
+    --sidebar-primary-foreground: 225 30% 8%;
+    --sidebar-accent: 225 22% 12%;
+    --sidebar-accent-foreground: 36 20% 92%;
+    --sidebar-border: 225 22% 14%;
+    --sidebar-ring: 32 45% 60%;
+
+    --success: 145 32% 50%;
+    --success-foreground: 36 20% 96%;
+    --warning: 32 55% 62%;
+    --warning-foreground: 225 28% 10%;
+    --kpi-blue: 222 55% 65%;
+    --kpi-green: 145 32% 55%;
+    --kpi-orange: 32 55% 62%;
+    --kpi-red: 6 60% 58%;
+    --kpi-purple: 258 35% 65%;
+
+    /* OTRN status palette (dark) */
+    --status-active:        160 45% 55%;
+    --status-active-bg:     160 45% 55% / 0.16;
+    --status-idle:          32 55% 65%;
+    --status-idle-bg:       32 55% 65% / 0.16;
+    --status-warning:       38 70% 60%;
+    --status-warning-bg:    38 70% 60% / 0.16;
+    --status-missing:       12 65% 62%;
+    --status-missing-bg:    12 65% 62% / 0.16;
+    --status-resigned:      225 8% 60%;
+    --status-resigned-bg:   225 10% 60% / 0.14;
+
+    /* OTRN chart sequence (dark) */
+    --chart-1: 32 55% 62%;      /* sand */
+    --chart-2: 222 55% 70%;     /* indigo light */
+    --chart-3: 160 45% 55%;     /* sage */
+    --chart-4: 38 70% 60%;      /* ochre */
+    --chart-5: 12 65% 62%;      /* terracotta */
+    --chart-6: 225 10% 65%;     /* graphite */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-lg;
+  }
+  .command-glow {
+    box-shadow: 0 0 15px -3px hsl(var(--primary) / 0.15), 0 0 6px -4px hsl(var(--primary) / 0.1);
+  }
+  .data-grid-row {
+    @apply border-b border-border/30 transition-colors hover:bg-muted/50;
+  }
+  .status-dot {
+    @apply h-2 w-2 rounded-full;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Animations */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+  50% { box-shadow: 0 0 0 5px hsl(var(--primary) / 0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Table row interactions */
+tr.animate-row {
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+tr.animate-row:hover {
+  background-color: hsl(var(--muted));
+}
+tr.animate-row:active {
+  transform: scale(0.995);
+}
+
+/* Card press effect */
+.card-press {
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+.card-press:active {
+  transform: scale(0.98);
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  background: hsl(var(--bg1)) !important;
+  font-family: inherit;
+}
+.leaflet-popup-content-wrapper {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
+}
+.leaflet-popup-tip {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-top: none !important;
+  border-left: none !important;
+}
+.leaflet-popup-content {
+  margin: 8px 10px !important;
+}
+.building-popup .leaflet-popup-close-btn {
+  display: none;
+}
+.leaflet-control-attribution {
+  background: hsl(var(--bg1) / 0.8) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  font-size: 9px !important;
+}
+.leaflet-control-attribution a {
+  color: hsl(var(--primary)) !important;
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ============================================================
+   STOS Landing — scoped brand palette (Navy + Electric Blue)
+   Overrides design tokens only inside `.stos-landing`.
+   ============================================================ */
+.stos-landing {
+  --background: 0 0% 100%;
+  --foreground: 222 70% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 70% 11%;
+  --muted: 220 24% 96%;
+  --muted-foreground: 222 14% 42%;
+  --border: 220 18% 90%;
+  --input: 220 18% 90%;
+  --ring: 221 83% 53%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 222 70% 17%;
+  --accent-foreground: 0 0% 100%;
+
+  --brand-navy: 222 70% 17%;       /* #0B1F4D */
+  --brand-navy-deep: 222 80% 10%;
+  --brand-electric: 221 83% 53%;   /* #2563EB */
+  --brand-electric-soft: 221 83% 96%;
+  --brand-cyan: 199 89% 60%;
+  --brand-success: 152 60% 42%;
+  --brand-warning: 28 92% 56%;
+  --brand-danger: 0 78% 56%;
+
+  --grad-hero: radial-gradient(60% 80% at 50% 0%, hsl(221 83% 96%) 0%, transparent 60%),
+               radial-gradient(40% 60% at 100% 20%, hsl(199 89% 95%) 0%, transparent 70%),
+               linear-gradient(180deg, #ffffff 0%, hsl(220 30% 98%) 100%);
+  --grad-navy: linear-gradient(135deg, hsl(222 80% 10%) 0%, hsl(222 70% 17%) 50%, hsl(221 83% 30%) 100%);
+  --grad-electric: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(199 89% 60%) 100%);
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: hsl(var(--foreground));
+  background: #ffffff;
+}
+
+.stos-landing .stos-grid-bg {
+  background-image:
+    linear-gradient(hsl(220 18% 92%) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(220 18% 92%) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+}
+
+.stos-landing .stos-glass {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 20px 60px -20px rgba(11,31,77,0.25), 0 4px 12px -4px rgba(11,31,77,0.08);
+}
+
+.stos-landing .stos-card {
+  background: #fff;
+  border: 1px solid hsl(220 18% 92%);
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(11,31,77,0.04), 0 12px 40px -16px rgba(11,31,77,0.08);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
+}
+.stos-landing .stos-card:hover {
+  transform: translateY(-4px);
+  border-color: hsl(221 83% 80%);
+  box-shadow: 0 4px 8px rgba(11,31,77,0.06), 0 24px 60px -20px rgba(37,99,235,0.18);
+}
+
+.stos-landing .stos-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 999px;
+  background: hsl(221 83% 96%);
+  color: hsl(221 83% 38%);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  border: 1px solid hsl(221 83% 90%);
+}
+
+.stos-landing .stos-h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: hsl(var(--brand-navy));
+}
+.stos-landing .stos-h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: hsl(var(--brand-navy));
+}
+.stos-landing .stos-h3 {
+  font-size: 20px; font-weight: 600; letter-spacing: -0.01em;
+  color: hsl(var(--brand-navy));
+}
+.stos-landing .stos-lead {
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+}
+
+.stos-landing .stos-grad-text {
+  background: linear-gradient(135deg, hsl(221 83% 53%), hsl(199 89% 55%));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.stos-landing .stos-dot-pulse {
+  position: relative; display: inline-block; width: 8px; height: 8px;
+  border-radius: 999px; background: hsl(var(--brand-success));
+}
+.stos-landing .stos-dot-pulse::after {
+  content: ''; position: absolute; inset: -6px; border-radius: 999px;
+  border: 2px solid hsl(var(--brand-success) / 0.4);
+  animation: stos-ping 1.6s cubic-bezier(0,0,0.2,1) infinite;
+}
+@keyframes stos-ping {
+  0% { transform: scale(0.6); opacity: 1; }
+  80%, 100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes stos-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.stos-landing .stos-float { animation: stos-float 6s ease-in-out infinite; }
+.stos-landing .stos-float-delay { animation: stos-float 7s ease-in-out infinite; animation-delay: -2s; }
+
+@keyframes stos-line {
+  0% { stroke-dashoffset: 200; opacity: 0; }
+  20% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0.8; }
+}
+.stos-landing .stos-line {
+  stroke-dasharray: 200; animation: stos-line 4s linear infinite;
+}
+
+.stos-landing .stos-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-size: 14px;
+  line-height: 1.4;
+  transition: border-color .15s, box-shadow .15s;
+}
+.stos-landing textarea.stos-input { height: auto; min-height: 88px; padding: 10px 14px; resize: vertical; }
+.stos-landing .stos-input::placeholder { color: hsl(var(--muted-foreground)); }
+.stos-landing .stos-input:focus {
+  outline: none;
+  border-color: hsl(221 83% 53%);
+  box-shadow: 0 0 0 3px hsl(221 83% 53% / 0.15);
+}
+.stos-landing select.stos-input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, hsl(var(--muted-foreground)) 50%), linear-gradient(135deg, hsl(var(--muted-foreground)) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
