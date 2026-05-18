@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "STOS",
+    "slug": "stos-mobile",
+    "scheme": "stos",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1E3066"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.securitech.stos"
+    },
+    "android": {
+      "package": "com.securitech.stos",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1E3066"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "./plugins/withAndroidRelease.js",
+      "expo-router",
+      "expo-secure-store",
+      "expo-font"
+    ]
+  }
+}

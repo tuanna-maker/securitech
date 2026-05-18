@@ -11,6 +11,8 @@ node_modules
 .env
 .env.*
 !.env.example
+keystore.properties
+keystores/
 dist
 dist-ssr
 *.local
