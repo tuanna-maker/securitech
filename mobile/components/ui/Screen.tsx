@@ -6,9 +6,11 @@ import {
   ScrollView,
   RefreshControl,
   ActivityIndicator,
+  Platform,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../hooks/useTheme";
+import { spacing, textStyle } from "../../lib/design";
 
 type Props = {
   title: string;
@@ -19,6 +21,7 @@ type Props = {
   onRefresh?: () => void;
   refreshing?: boolean;
   action?: ReactNode;
+  largeTitle?: boolean;
 };
 
 export function Screen({
@@ -30,19 +33,21 @@ export function Screen({
   onRefresh,
   refreshing,
   action,
+  largeTitle = true,
 }: Props) {
   const { colors } = useTheme();
 
   const content = loading ? (
     <View style={styles.center}>
-      <ActivityIndicator size="large" color={colors.secondary} />
+      <ActivityIndicator size="large" color={colors.tint} />
     </View>
   ) : scroll ? (
     <ScrollView
       contentContainerStyle={styles.scroll}
+      showsVerticalScrollIndicator={false}
       refreshControl={
         onRefresh ? (
-          <RefreshControl refreshing={!!refreshing} onRefresh={onRefresh} tintColor={colors.secondary} />
+          <RefreshControl refreshing={!!refreshing} onRefresh={onRefresh} tintColor={colors.tint} />
         ) : undefined
       }
     >
@@ -54,11 +59,20 @@ export function Screen({
 
   return (
     <SafeAreaView style={[styles.safe, { backgroundColor: colors.background }]} edges={["top"]}>
-      <View style={[styles.header, { borderBottomColor: colors.border }]}>
+      <View style={styles.header}>
         <View style={styles.headerText}>
-          <Text style={[styles.title, { color: colors.text }]}>{title}</Text>
+          <Text
+            style={[
+              largeTitle ? textStyle("largeTitle", "bold") : textStyle("title3", "bold"),
+              { color: colors.text },
+            ]}
+          >
+            {title}
+          </Text>
           {subtitle ? (
-            <Text style={[styles.sub, { color: colors.textSecondary }]}>{subtitle}</Text>
+            <Text style={[textStyle("subhead"), { color: colors.textSecondary, marginTop: 4 }]}>
+              {subtitle}
+            </Text>
           ) : null}
         </View>
         {action}
@@ -72,15 +86,13 @@ const styles = StyleSheet.create({
   safe: { flex: 1 },
   header: {
     flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderBottomWidth: 1,
+    alignItems: "flex-end",
+    paddingHorizontal: spacing.lg,
+    paddingTop: Platform.OS === "ios" ? spacing.sm : spacing.lg,
+    paddingBottom: spacing.sm,
   },
   headerText: { flex: 1 },
-  title: { fontSize: 20, fontWeight: "700" },
-  sub: { fontSize: 13, marginTop: 2 },
-  scroll: { padding: 16, paddingBottom: 32 },
-  body: { flex: 1, padding: 16 },
+  scroll: { paddingHorizontal: spacing.lg, paddingBottom: spacing.section },
+  body: { flex: 1, padding: spacing.lg },
   center: { flex: 1, alignItems: "center", justifyContent: "center", padding: 40 },
 });

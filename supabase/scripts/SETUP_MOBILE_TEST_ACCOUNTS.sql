@@ -1,0 +1,6 @@
+-- Chạy lần lượt trên Lovable SQL (Supabase SQL Editor không hỗ trợ \ir):
+--   1. SETUP_LIFE_TEST_ACCOUNT.sql
+--   2. SETUP_GUARD_TEST_ACCOUNT.sql
+--
+-- Life:  life.demo@stos.local  / StosLife@2026
+-- Guard: guard.demo@stos.local / StosGuard@2026

@@ -1,0 +1,62 @@
+/** STOS brand + iOS semantic colors — see docs/THEMES_MOBILE.md */
+export const brand = {
+  navy: "#1E3066",
+  navyLight: "#2E4BB0",
+  techCyan: "#00AEEF",
+  illustration: {
+    stroke: "#1E3066",
+    fillDark: "#1E3066",
+    fillMid: "#2E4BB0",
+    fillLight: "#00AEEF",
+    fillPale: "#93C5FD",
+  },
+  orange: "#F58220",
+  orangeDark: "#FF983D",
+  success: "#22C55E",
+  warning: "#FACC15",
+  danger: "#EF4444",
+  lifeGrab: "#EF4444",
+} as const;
+
+export const colors = {
+  light: {
+    primary: brand.navy,
+    secondary: brand.orange,
+    tint: "#007AFF",
+    background: "#F2F2F7",
+    groupedBackground: "#FFFFFF",
+    card: "#FFFFFF",
+    text: "#000000",
+    textSecondary: "#3C3C43",
+    textTertiary: "#8E8E93",
+    border: "rgba(60, 60, 67, 0.18)",
+    separator: "rgba(60, 60, 67, 0.29)",
+    fill: "rgba(120, 120, 128, 0.16)",
+    danger: "#FF3B30",
+    success: "#34C759",
+    warning: "#FF9500",
+    tabBar: "rgba(255, 255, 255, 0.92)",
+    grab: brand.lifeGrab,
+  },
+  dark: {
+    primary: "#5B7FD6",
+    secondary: brand.orangeDark,
+    tint: "#0A84FF",
+    background: "#000000",
+    groupedBackground: "#1C1C1E",
+    card: "#1C1C1E",
+    text: "#FFFFFF",
+    textSecondary: "#EBEBF5",
+    textTertiary: "#8E8E93",
+    border: "rgba(84, 84, 88, 0.65)",
+    separator: "rgba(84, 84, 88, 0.65)",
+    fill: "rgba(120, 120, 128, 0.32)",
+    danger: "#FF453A",
+    success: "#30D158",
+    warning: "#FF9F0A",
+    tabBar: "rgba(28, 28, 30, 0.92)",
+    grab: "#FF6961",
+  },
+} as const;
+
+export type ThemeColors = typeof colors.light;

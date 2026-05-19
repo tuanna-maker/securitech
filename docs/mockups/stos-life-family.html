@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>STOS Life — Gia đình tôi (mockup)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Mã màu mockup STOS Life — Gia đình tôi */
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --text-2: #64748b;
+      --text-3: #94a3b8;
+      --border: #e8ebf0;
+      --navy: #1e3066;
+      --blue: #1a5cff;
+      --blue-tint: #2563eb;
+      --pill-bg: #dbeafe;
+      --pill-text: #1d4ed8;
+      --green-trend: #4cd964;
+      --orange-alert: #ff9500;
+      --shadow-card: 0 4px 24px rgba(30, 48, 102, 0.06);
+      --shadow-tile: 0 2px 8px rgba(100, 116, 139, 0.08);
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      /* Kích thước icon 3D (px) — khớp mockup @390pt */
+      --icon-quick: 48px;
+      --icon-mgmt: 52px;
+      --icon-service: 44px;
+      --icon-ai-robot: 48px;
+      --icon-chip: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px 12px 48px;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ——— Phone frame ——— */
+    .phone {
+      width: 100%;
+      max-width: 390px;
+      min-height: 844px;
+      background: var(--bg);
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18);
+      border: 8px solid #0f172a;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .status-bar {
+      height: 44px;
+      padding: 12px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 16px 120px;
+      scrollbar-width: none;
+    }
+    .scroll::-webkit-scrollbar { display: none; }
+
+    /* ——— Header ——— */
+    .app-header { margin-bottom: 12px; }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .brand-emblem {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .brand-emblem img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand-title { font-size: 16px; font-weight: 700; color: #2563eb; line-height: 1.2; letter-spacing: -0.02em; }
+    .brand-tag { font-size: 11px; color: var(--text-3); }
+
+    .title-row {
+      display: grid;
+      grid-template-columns: 72px 1fr 72px;
+      align-items: center;
+    }
+    .screen-title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+    .bell {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+    }
+    .bell-badge {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: 8px;
+      background: #ef4444;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+    }
+    .header-avatar {
+      width: 34px;
+      background: #e2e8f0;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 1px 4px rgba(0,0,0,.12);
+    }
+
+    /* ——— Profile card ——— */
+    .profile-card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    .profile-top {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .avatar-wrap { position: relative; flex-shrink: 0; }
+    .avatar-wrap {
+      background: linear-gradient(145deg, #dbeafe 0%, #eff6ff 100%);
+      border-radius: 50%;
+      padding: 2px;
+    }
+    .avatar {
+      width: 80px;
+      display: block;
+      background: #e2e8f0;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .cam-btn {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2px solid #fff;
+      display: grid;
+      place-items: center;
+    }
+    .cam-btn svg { width: 14px; height: 14px; fill: #fff; }
+
+    .profile-info { flex: 1; min-width: 0; }
+    .profile-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .profile-text { flex: 1; min-width: 0; }
+    .family-name {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .member-pill {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--pill-bg);
+      color: var(--pill-text);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .motto {
+      margin-top: 8px;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-2);
+      line-height: 1.45;
+    }
+    .chevron { color: var(--text-3); flex-shrink: 0; margin-top: 2px; }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0;
+    }
+
+    /* ——— Quick tiles ——— */
+    .quick-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .quick-tile {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-tile);
+      padding: 10px 4px 8px;
+      min-height: 88px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .15s;
+    }
+    .quick-tile:active { transform: scale(0.97); }
+    .icon-3d {
+      display: block;
+      flex-shrink: 0;
+      overflow: visible;
+    }
+    svg.icon-3d { filter: drop-shadow(0 3px 6px rgba(15, 23, 42, 0.12)); }
+    .quick-tile .icon-3d {
+      width: var(--icon-quick);
+      height: var(--icon-quick);
+      margin-bottom: 4px;
+    }
+    .quick-tile span {
+      font-size: 10px;
+      line-height: 12px;
+      font-weight: 500;
+      text-align: center;
+      color: #1e293b;
+    }
+
+    /* ——— Section ——— */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .section-head h2 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-3);
+    }
+    .link { font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: none; }
+
+    /* ——— Mgmt grid 2×2 ——— */
+    .mgmt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .mgmt-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 14px;
+      min-height: 168px;
+      position: relative;
+    }
+    .mgmt-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .mgmt-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 10px;
+      line-height: 1.3;
+    }
+    .mgmt-meta { font-size: 11px; color: var(--text-2); margin-top: 4px; }
+    .mgmt-amount { font-size: 17px; font-weight: 700; margin-top: 2px; }
+    .trend-down { color: var(--green-trend); font-size: 11px; font-weight: 600; margin-top: 2px; }
+    .trend-alert { color: var(--orange-alert); font-size: 12px; font-weight: 600; margin-top: 6px; }
+    .mgmt-top .icon-3d { width: var(--icon-mgmt); height: var(--icon-mgmt); }
+
+    .kid-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .kid-av {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1.5px solid #fff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+    }
+    .food-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .food-row .trend-alert { margin-top: 0; flex: 1; min-width: 0; font-size: 11px; line-height: 1.35; }
+    .food-row .thumb-row { margin-top: 0; flex-shrink: 0; }
+    .mgmt-card.health-card { min-height: 178px; }
+    .mgmt-card.health-card .reminder { font-size: 10px; line-height: 1.4; }
+    .kid-name { font-size: 12px; font-weight: 600; }
+    .kid-detail {
+      font-size: 11px;
+      color: var(--text-3);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; }
+
+    .thumb-row { display: flex; gap: 6px; margin-top: 8px; }
+    .thumb {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .reminder {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-2);
+      line-height: 1.35;
+    }
+    .reminder .mini-icon { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ——— Services ——— */
+    .services {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+    }
+    .services::-webkit-scrollbar { display: none; }
+    .service-item {
+      flex: 0 0 72px;
+      text-align: center;
+    }
+    .service-box {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-tile);
+      display: grid;
+      place-items: center;
+    }
+    .service-box .icon-3d { width: var(--icon-service); height: var(--icon-service); }
+    .service-item span {
+      font-size: 10px;
+      line-height: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ——— Moments ——— */
+    .moments {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+    }
+    .moments::-webkit-scrollbar { display: none; }
+    .moment {
+      flex: 0 0 156px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    .moment img { width: 100%; height: 100px; object-fit: cover; display: block; }
+    .moment-body { padding: 10px; }
+    .moment-title { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .moment-date { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+    /* ——— AI bar ——— */
+    .ai-bar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      margin-bottom: 8px;
+    }
+    .ai-chevron { flex-shrink: 0; color: var(--text-3); }
+    .ai-left {
+      width: 100px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .ai-robot {
+      width: var(--icon-ai-robot);
+      height: var(--icon-ai-robot);
+      margin: 0 auto 6px;
+    }
+    .ai-robot .icon-3d { width: 100%; height: 100%; filter: drop-shadow(0 4px 8px rgba(26, 92, 255, 0.25)); }
+    .ai-left p { font-size: 12px; font-weight: 600; line-height: 1.3; }
+    .ai-chips {
+      flex: 1;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .ai-chips::-webkit-scrollbar { display: none; }
+    .ai-chip {
+      flex: 0 0 auto;
+      max-width: 220px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: var(--shadow-tile);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .ai-chip .icon-3d { width: var(--icon-chip); height: var(--icon-chip); filter: drop-shadow(0 1px 3px rgba(15, 23, 42, 0.1)); }
+
+    /* ——— Tab bar ——— */
+    .tab-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 8px 12px calc(12px + var(--safe-bottom));
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+    }
+    .tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 10px;
+      color: var(--text-3);
+      text-decoration: none;
+      padding: 4px 8px;
+    }
+    .tab.active { color: var(--blue); font-weight: 600; }
+    .tab svg { width: 22px; height: 22px; opacity: .7; }
+    .tab.active svg { opacity: 1; }
+
+    .reminder .icon-3d { width: 18px; height: 18px; }
+    .link { color: var(--blue); }
+    .tab.active { color: var(--blue); }
+  </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" id="stos-icons-sprite" aria-hidden="true">
+  <defs>
+    <filter id="drop" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.8" flood-color="#1e3066" flood-opacity="0.16"/>
+    </filter>
+    <filter id="drop-sm" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.4" flood-color="#1e3066" flood-opacity="0.14"/>
+    </filter>
+
+    <!-- Quick: Th�nh vi�n � xanh #4A89F3 ? #76A9F9 (?o t? mockup) -->
+    <linearGradient id="g-mb" x1="32" y1="58" x2="32" y2="6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3A75EB"/>
+      <stop offset="1" stop-color="#8BB5F5"/>
+    </linearGradient>
+    <symbol id="i-members" viewBox="0 0 64 64">
+      <ellipse cx="32" cy="57" rx="17" ry="3.5" fill="#1e3066" opacity="0.07"/>
+      <g filter="url(#drop)">
+        <circle cx="40" cy="21" r="9" fill="url(#g-mb)"/>
+        <path d="M31 48c0-4.2 3.2-7.5 9-7.5s9 3.3 9 7.5" fill="url(#g-mb)"/>
+        <circle cx="24" cy="19" r="11" fill="url(#g-mb)"/>
+        <path d="M11 50c0-6.5 5.8-11.5 13-11.5s13 5 13 11.5" fill="url(#g-mb)"/>
+        <ellipse cx="21" cy="14" rx="9" ry="4.5" fill="#fff" opacity="0.32"/>
+      </g>
+    </symbol>
+
+    <!-- Quick: L?ch � t�m, 6 ch?m 2�3 -->
+    <linearGradient id="g-cal" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7A58D5"/>
+      <stop offset="1" stop-color="#B389F9"/>
+    </linearGradient>
+    <symbol id="i-calendar" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <rect x="15" y="20" width="34" height="34" rx="8" fill="url(#g-cal)"/>
+        <rect x="15" y="20" width="34" height="11" rx="8" fill="#6D28D9" opacity="0.35"/>
+        <rect x="21" y="11" width="5" height="11" rx="2.5" fill="url(#g-cal)"/>
+        <rect x="38" y="11" width="5" height="11" rx="2.5" fill="url(#g-cal)"/>
+        <circle cx="22" cy="36" r="2.4" fill="#fff"/>
+        <circle cx="32" cy="36" r="2.4" fill="#fff"/>
+        <circle cx="42" cy="36" r="2.4" fill="#fff"/>
+        <circle cx="22" cy="44" r="2.4" fill="#fff"/>
+        <circle cx="32" cy="44" r="2.4" fill="#fff"/>
+        <circle cx="42" cy="44" r="2.4" fill="#fff"/>
+        <ellipse cx="26" cy="22" rx="12" ry="4" fill="#fff" opacity="0.22"/>
+      </g>
+    </symbol>
+
+    <!-- Quick: K? ni?m � h?ng/??, ribbon + sao -->
+    <linearGradient id="g-mem" x1="32" y1="56" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E73558"/>
+      <stop offset="1" stop-color="#F9899B"/>
+    </linearGradient>
+    <symbol id="i-memories" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M22 9 H42 C45.5 9 48 11.5 48 15 V40 L32 54 L16 40 V15 C16 11.5 18.5 9 22 9 Z" fill="url(#g-mem)"/>
+        <path d="M22 9 H42 V16 H33 L30 12 H22 Z" fill="#fff" opacity="0.26"/>
+        <path d="M32 21 L34.2 26.2 L39.8 26.6 L35.2 30.2 L36.8 36 L32 33 L27.2 36 L28.8 30.2 L24.2 26.6 L29.8 26.2 Z" fill="#fff"/>
+        <ellipse cx="27" cy="13" rx="11" ry="5" fill="#fff" opacity="0.28"/>
+      </g>
+    </symbol>
+
+    <!-- Quick: C�i ??t � xanh l�, b�nh r?ng 8 r?ng -->
+    <linearGradient id="g-set" x1="32" y1="58" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#86EFAC"/>
+    </linearGradient>
+    <symbol id="i-settings" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path fill="url(#g-set)" d="M32 11 L35.2 19.8 L44 18.2 L40.5 26.8 L48 28 L40.5 29.2 L44 37.8 L35.2 36.2 L32 45 L28.8 36.2 L20 37.8 L23.5 29.2 L16 28 L23.5 26.8 L20 18.2 L28.8 19.8 Z"/>
+        <circle cx="32" cy="28" r="6.5" fill="#fff" opacity="0.42"/>
+        <ellipse cx="25" cy="17" rx="13" ry="5" fill="#fff" opacity="0.24"/>
+      </g>
+    </symbol>
+
+    <!-- MGMT: V� chi ti�u -->
+    <linearGradient id="g-wallet" x1="32" y1="54" x2="32" y2="12" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+    <symbol id="i-wallet" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <rect x="10" y="22" width="44" height="28" rx="9" fill="url(#g-wallet)"/>
+        <rect x="10" y="22" width="44" height="9" rx="9" fill="#93C5FD" opacity="0.55"/>
+        <path d="M10 30 H54" stroke="#1D4ED8" stroke-width="1" opacity="0.2"/>
+        <rect x="38" y="30" width="16" height="14" rx="7" fill="#FBBF24"/>
+        <circle cx="46" cy="37" r="4" fill="#FDE047"/>
+        <ellipse cx="22" cy="26" rx="14" ry="4" fill="#fff" opacity="0.22"/>
+      </g>
+    </symbol>
+
+    <!-- MGMT: Con � t�m, m?t c??i -->
+    <linearGradient id="g-child" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#C4B5FD"/>
+    </linearGradient>
+    <symbol id="i-child" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <circle cx="32" cy="23" r="14" fill="url(#g-child)"/>
+        <path d="M14 52c0-8.5 8-14.5 18-14.5s18 6 18 14.5" fill="url(#g-child)"/>
+        <circle cx="26" cy="21" r="2.2" fill="#fff"/>
+        <circle cx="38" cy="21" r="2.2" fill="#fff"/>
+        <path d="M26 30 Q32 34.5 38 30" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="25" cy="17" rx="9" ry="4" fill="#fff" opacity="0.28"/>
+      </g>
+    </symbol>
+
+    <!-- MGMT: Th?c ph?m � cam, gi? -->
+    <linearGradient id="g-food" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#EA580C"/>
+      <stop offset="1" stop-color="#FDBA74"/>
+    </linearGradient>
+    <symbol id="i-food" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M18 24c0-5.5 6-9.5 14-9.5s14 4 14 9.5v3H18v-3z" fill="url(#g-food)"/>
+        <path d="M14 29h36l-2.5 18H16.5L14 29z" fill="url(#g-food)"/>
+        <path d="M22 32h20M20 38h24M22 44h20" stroke="#fff" stroke-width="1.6" opacity="0.35" stroke-linecap="round"/>
+        <path d="M16 22c3.5-5 9-7 16-7" stroke="url(#g-food)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        <path d="M48 22c-3.5-5-9-7-16-7" stroke="url(#g-food)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        <ellipse cx="28" cy="18" rx="10" ry="4" fill="#fff" opacity="0.22"/>
+      </g>
+    </symbol>
+
+    <!-- MGMT: S?c kh?e � tim + nh?p -->
+    <linearGradient id="g-health" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16A34A"/>
+      <stop offset="1" stop-color="#4ADE80"/>
+    </linearGradient>
+    <symbol id="i-health" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M32 52 C18 38 10 30 10 22 C10 14 16 10 22 10 C26 10 30 12 32 16 C34 12 38 10 42 10 C48 10 54 14 54 22 C54 30 46 38 32 52 Z" fill="url(#g-health)"/>
+        <path d="M14 30 H22 L26 22 L32 38 L38 24 L42 30 H50" stroke="#fff" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <ellipse cx="24" cy="15" rx="10" ry="5" fill="#fff" opacity="0.26"/>
+      </g>
+    </symbol>
+
+    <!-- D?ch v? -->
+    <linearGradient id="g-plane" x1="32" y1="54" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#7DD3FC"/>
+    </linearGradient>
+    <symbol id="i-plane" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M8 34 L34 14 L40 22 L56 12 L44 32 H36 L30 46 L24 36 H8 Z" fill="url(#g-plane)"/>
+        <path d="M14 28 L38 16" stroke="#fff" stroke-width="2" opacity="0.28" stroke-linecap="round"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-home" x1="32" y1="54" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0D9488"/>
+      <stop offset="1" stop-color="#5EEAD4"/>
+    </linearGradient>
+    <symbol id="i-home" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M12 30 L32 12 L52 30 V50 H12 Z" fill="url(#g-home)"/>
+        <rect x="26" y="36" width="12" height="14" rx="1.5" fill="#fff" opacity="0.32"/>
+        <circle cx="48" cy="40" r="5.5" fill="#0F766E"/>
+        <path d="M46 40 H50 M48 38 V42" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+        <ellipse cx="28" cy="22" rx="14" ry="5" fill="#fff" opacity="0.2"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-car" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#EA580C"/>
+      <stop offset="1" stop-color="#FB923C"/>
+    </linearGradient>
+    <symbol id="i-car" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M10 34 H54 L48 18 H16 L10 34 Z" fill="url(#g-car)"/>
+        <rect x="14" y="26" width="36" height="7" rx="2" fill="#fff" opacity="0.18"/>
+        <circle cx="20" cy="36" r="5.5" fill="#fff"/>
+        <circle cx="44" cy="36" r="5.5" fill="#fff"/>
+        <circle cx="20" cy="36" r="2.5" fill="#64748B"/>
+        <circle cx="44" cy="36" r="2.5" fill="#64748B"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-cart" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#C4B5FD"/>
+    </linearGradient>
+    <symbol id="i-cart" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M18 18 H14 L18 46 H46 L52 18 H22" fill="none" stroke="url(#g-cart)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M18 18 H14 L18 46 H46 L52 18 H22" fill="url(#g-cart)" opacity="0.95"/>
+        <circle cx="22" cy="50" r="3.2" fill="url(#g-cart)"/>
+        <circle cx="42" cy="50" r="3.2" fill="url(#g-cart)"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-crown" x1="32" y1="54" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#CA8A04"/>
+      <stop offset="1" stop-color="#FDE047"/>
+    </linearGradient>
+    <symbol id="i-crown" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M10 38 H54 L32 14 L24 26 L18 18 L12 26 L6 18 Z" fill="url(#g-crown)"/>
+        <rect x="14" y="38" width="36" height="8" rx="2" fill="url(#g-crown)"/>
+        <circle cx="18" cy="22" r="3.2" fill="#FBBF24"/>
+        <circle cx="32" cy="16" r="3.2" fill="#FBBF24"/>
+        <circle cx="46" cy="22" r="3.2" fill="#FBBF24"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-robot" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+    <symbol id="i-robot" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <rect x="14" y="20" width="36" height="28" rx="12" fill="url(#g-robot)"/>
+        <rect x="26" y="11" width="12" height="11" rx="4" fill="url(#g-robot)"/>
+        <circle cx="24" cy="32" r="3.5" fill="#fff"/>
+        <circle cx="40" cy="32" r="3.5" fill="#fff"/>
+        <rect x="22" y="40" width="20" height="3" rx="1.5" fill="#fff" opacity="0.45"/>
+        <ellipse cx="28" cy="24" rx="10" ry="4" fill="#fff" opacity="0.2"/>
+      </g>
+    </symbol>
+
+    <symbol id="i-pill" viewBox="0 0 64 64">
+      <g filter="url(#drop-sm)">
+        <rect x="16" y="30" width="32" height="12" rx="6" fill="#F472B6" transform="rotate(-32 32 36)"/>
+        <rect x="22" y="20" width="14" height="14" rx="7" fill="#EC4899" transform="rotate(-32 29 27)"/>
+      </g>
+    </symbol>
+
+    <symbol id="i-clinic" viewBox="0 0 64 64">
+      <g filter="url(#drop-sm)">
+        <rect x="16" y="22" width="32" height="26" rx="5" fill="#8B5CF6"/>
+        <path d="M30 28 V42 M24 35 H36" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-brand" x1="32" y1="64" x2="32" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E3066"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <symbol id="i-brand" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="14" fill="url(#g-brand)"/>
+      <path d="M32 12 L36 24 H48 L38 32 L42 48 L32 40 L22 48 L26 32 L16 24 H28 Z" fill="#fff" opacity="0.95"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<article class="phone" aria-label="STOS Life — Gia đình tôi">
+  <div class="status-bar">
+    <span>9:41</span>
+    <span>●●●</span>
+  </div>
+
+  <main class="scroll">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-row">
+        <div class="brand-emblem" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-brand"/></svg>
+        </div>
+        <div>
+          <div class="brand-title">STOS Life</div>
+          <div class="brand-tag">Vì cuộc sống an tâm</div>
+        </div>
+      </div>
+      <div class="title-row">
+        <div></div>
+        <h1 class="screen-title">Gia đình tôi</h1>
+        <div class="header-actions">
+          <div class="bell" aria-label="Thông báo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <span class="bell-badge">3</span>
+          </div>
+          <img class="header-avatar" src="assets/family-hero-sm.jpg" alt="" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Profile + quick actions -->
+    <section class="profile-card">
+      <div class="profile-top">
+        <div class="avatar-wrap">
+          <img class="avatar" src="assets/family-hero.jpg" alt="" />
+          <div class="cam-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 7h3l2-2h6l2 2h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V9a2 2 0 012-2zm8 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+          </div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-head">
+            <div class="profile-text">
+              <h2 class="family-name">Gia đình Minh</h2>
+              <span class="member-pill">4 thành viên</span>
+              <p class="motto">"Cùng nhau xây dựng tổ ấm an toàn – hạnh phúc – tiện nghi" 💙</p>
+            </div>
+            <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="quick-row">
+        <a class="quick-tile" href="#">
+          <svg viewBox="0 0 64 64" class="icon-3d" width="48" height="48" aria-hidden="true"><use href="#i-members"/></svg>
+          <span>Thành viên</span>
+        </a>
+        <a class="quick-tile" href="#">
+          <svg viewBox="0 0 64 64" class="icon-3d" width="48" height="48" aria-hidden="true"><use href="#i-calendar"/></svg>
+          <span>Lịch gia<br/>đình</span>
+        </a>
+        <a class="quick-tile" href="#">
+          <svg viewBox="0 0 64 64" class="icon-3d" width="48" height="48" aria-hidden="true"><use href="#i-memories"/></svg>
+          <span>Kỷ niệm</span>
+        </a>
+        <a class="quick-tile" href="#">
+          <svg viewBox="0 0 64 64" class="icon-3d" width="48" height="48" aria-hidden="true"><use href="#i-settings"/></svg>
+          <span>Cài đặt</span>
+        </a>
+      </div>
+    </section>
+
+  <p class="section-label">QUẢN LÝ GIA ĐÌNH</p>
+  <section class="mgmt-grid">
+    <article class="mgmt-card">
+      <div class="mgmt-top">
+        <svg viewBox="0 0 64 64" class="icon-3d" width="52" height="52" aria-hidden="true"><use href="#i-wallet"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <h3>Chi tiêu gia đình</h3>
+      <p class="mgmt-meta">Tổng chi tháng 5</p>
+      <p class="mgmt-amount">18.450.000đ</p>
+      <p class="trend-down">▼ 8,2% so với tháng 4</p>
+    </article>
+    <article class="mgmt-card">
+      <div class="mgmt-top">
+        <svg viewBox="0 0 64 64" class="icon-3d" width="52" height="52" aria-hidden="true"><use href="#i-child"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <h3>Đồng hành cùng con</h3>
+      <div class="kid-row">
+        <img class="kid-av" src="assets/kid-minh.jpg" alt="Bé Minh" />
+        <div><p class="kid-name">Bé Minh (7 tuổi)</p><p class="kid-detail"><span class="dot" style="background:#7c3aed"></span>8 lịch hôm nay</p></div>
+      </div>
+      <div class="kid-row">
+        <img class="kid-av" src="assets/kid-an.jpg" alt="Bé An" />
+        <div><p class="kid-name">Bé An (4 tuổi)</p><p class="kid-detail"><span class="dot" style="background:#22c55e"></span>3 lịch hôm nay</p></div>
+      </div>
+    </article>
+    <article class="mgmt-card">
+      <div class="mgmt-top">
+        <svg viewBox="0 0 64 64" class="icon-3d" width="52" height="52" aria-hidden="true"><use href="#i-food"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <h3>Thực phẩm &amp; Tủ lạnh</h3>
+      <div class="food-row">
+        <p class="trend-alert">2 thực phẩm sắp hết hạn</p>
+        <div class="thumb-row">
+          <img class="thumb" src="assets/food-strawberry.jpg" alt="Dâu tây" />
+          <img class="thumb" src="assets/food-milk.jpg" alt="Sữa" />
+          <img class="thumb" src="assets/food-salmon.jpg" alt="Cá hồi" />
+        </div>
+      </div>
+    </article>
+    <article class="mgmt-card health-card">
+      <div class="mgmt-top">
+        <svg viewBox="0 0 64 64" class="icon-3d" width="52" height="52" aria-hidden="true"><use href="#i-health"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <h3>Sức khỏe gia đình</h3>
+      <div class="reminder"><svg viewBox="0 0 64 64" class="icon-3d" width="18" height="18" aria-hidden="true"><use href="#i-pill"/></svg>Mẹ cần uống thuốc (20:00)</div>
+      <div class="reminder"><svg viewBox="0 0 64 64" class="icon-3d" width="18" height="18" aria-hidden="true"><use href="#i-clinic"/></svg>Bố có lịch khám (10:00 - 20/05)</div>
+    </article>
+  </section>
+
+  <p class="section-label">DỊCH VỤ GIA ĐÌNH</p>
+  <section class="services">
+    <div class="service-item"><div class="service-box"><svg viewBox="0 0 64 64" class="icon-3d" width="44" height="44" aria-hidden="true"><use href="#i-plane"/></svg></div><span>Cả nhà du lịch</span></div>
+    <div class="service-item"><div class="service-box"><svg viewBox="0 0 64 64" class="icon-3d" width="44" height="44" aria-hidden="true"><use href="#i-home"/></svg></div><span>Dịch vụ tại nhà</span></div>
+    <div class="service-item"><div class="service-box"><svg viewBox="0 0 64 64" class="icon-3d" width="44" height="44" aria-hidden="true"><use href="#i-car"/></svg></div><span>Đặt xe gia đình</span></div>
+    <div class="service-item"><div class="service-box"><svg viewBox="0 0 64 64" class="icon-3d" width="44" height="44" aria-hidden="true"><use href="#i-cart"/></svg></div><span>Mua sắm hộ</span></div>
+    <div class="service-item"><div class="service-box"><svg viewBox="0 0 64 64" class="icon-3d" width="44" height="44" aria-hidden="true"><use href="#i-crown"/></svg></div><span>Gói dịch vụ ưu đãi</span></div>
+  </section>
+
+  <div class="section-head">
+    <h2>KHOẢNH KHẮC GIA ĐÌNH</h2>
+    <a class="link" href="#">Xem tất cả</a>
+  </div>
+  <section class="moments">
+    <article class="moment"><img src="assets/moment-1.jpg" alt="" /><div class="moment-body"><p class="moment-title">Đà Nẵng – Hội An</p><p class="moment-date">20/05/2024</p></div></article>
+    <article class="moment"><img src="assets/moment-2.jpg" alt="" /><div class="moment-body"><p class="moment-title">Sinh nhật bé An</p><p class="moment-date">12/08/2024</p></div></article>
+    <article class="moment"><img src="assets/moment-3.jpg" alt="" /><div class="moment-body"><p class="moment-title">Bữa cơm cuối tuần</p><p class="moment-date">05/05/2024</p></div></article>
+    <article class="moment"><img src="assets/moment-4.jpg" alt="" /><div class="moment-body"><p class="moment-title">Ngày của mẹ</p><p class="moment-date">10/08/2024</p></div></article>
+    <article class="moment"><img src="assets/moment-5.jpg" alt="" /><div class="moment-body"><p class="moment-title">Bé Minh học bài</p><p class="moment-date">28/04/2024</p></div></article>
+  </section>
+
+  <section class="ai-bar">
+    <div class="ai-left">
+      <div class="ai-robot"><svg viewBox="0 0 64 64" class="icon-3d" width="48" height="48" aria-hidden="true"><use href="#i-robot"/></svg></div>
+      <p>AI gợi ý<br/>cho gia đình bạn</p>
+    </div>
+    <div class="ai-chips">
+      <div class="ai-chip"><svg viewBox="0 0 64 64" class="icon-3d" width="20" height="20" aria-hidden="true"><use href="#i-calendar"/></svg>Bé Minh có lớp Piano lúc 18:00</div>
+      <div class="ai-chip"><svg viewBox="0 0 64 64" class="icon-3d" width="20" height="20" aria-hidden="true"><use href="#i-food"/></svg>2 thực phẩm sắp hết hạn</div>
+      <motion class="ai-chip"><svg viewBox="0 0 64 64" class="icon-3d" width="20" height="20" aria-hidden="true"><use href="#i-pill"/></svg>Mẹ cần uống thuốc lúc 20:00</div>
+    </div>
+    <svg class="ai-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+  </section>
+  </main>
+
+  <nav class="tab-bar" aria-label="Tab">
+    <a class="tab" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Trang chủ</a>
+    <a class="tab active" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 3-1.34 3-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 2.05 1.97 3.45V20h6v-3.5c0-2.33-4.67-3.5-7-3.5z"/></svg>Gia đình tôi</a>
+    <a class="tab" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Dịch vụ</a>
+    <a class="tab" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Cộng đồng</a>
+    <a class="tab" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>Tài khoản</a>
+  </nav>
+</article>
+
+
+<script>
+document.querySelectorAll('img[src^="assets/"]').forEach(function(img) {
+  img.addEventListener('error', function() {
+    if (!this.dataset.fallback) {
+      this.dataset.fallback = '1';
+      this.src = 'assets/family-hero.jpg';
+    }
+  });
+});
+</script>
+
+</body>
+</html>

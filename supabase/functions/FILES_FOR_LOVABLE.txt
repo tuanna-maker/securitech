@@ -1,0 +1,31 @@
+STOS Mobile — Edge Functions cần có trên Lovable/Supabase
+============================================================
+
+FILE MỚI (tạo đúng path):
+  supabase/functions/_shared/push.ts
+  supabase/functions/push-dispatcher/index.ts
+
+FILE SỬA:
+  supabase/functions/_shared/audit.ts
+  supabase/functions/guard-handler/index.ts
+
+REDEPLOY (dùng emitEvent → cần audit.ts mới):
+  service-handler
+  sos-handler
+  guard-handler
+  life-handler
+
+DEPLOY push-dispatcher: Verify JWT = OFF
+
+SQL (SQL Editor):
+  supabase/scripts/MOBILE_REALTIME_PUBLICATION.sql
+  supabase/scripts/MOBILE_PUSH_TRIGGERS.sql
+  supabase/scripts/MOBILE_REQUEST_PUSH_TRIGGERS.sql   ← BẮT BUỘC nếu chưa có guard-handler
+
+THIẾU TRÊN LOVABLE (tạo mới cả folder):
+  supabase/functions/guard-handler/index.ts
+  supabase/functions/life-handler/index.ts
+  → docs/LOVABLE_MISSING_HANDLERS_PROMPT.md
+
+PROMPT cho Lovable chat:
+  docs/LOVABLE_EDGE_FUNCTIONS_PROMPT.md

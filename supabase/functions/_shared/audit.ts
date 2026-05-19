@@ -1,4 +1,5 @@
 import type { AuthContext } from "./auth.ts";
+import { dispatchPushForEvent } from "./push.ts";
 
 /**
  * Write an audit log entry.
@@ -30,9 +31,12 @@ export async function emitEvent(
   eventType: string,
   payload: Record<string, unknown>
 ) {
+  await dispatchPushForEvent(ctx.supabase, ctx.tenantId, eventType, payload);
+
   await ctx.supabase.from("system_events").insert({
     tenant_id: ctx.tenantId,
     event_type: eventType,
     payload,
+    is_processed: true,
   });
 }

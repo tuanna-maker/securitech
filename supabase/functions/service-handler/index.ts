@@ -75,6 +75,14 @@ Deno.serve(async (req) => {
 
         if (!v.isValid()) return badRequest("Validation failed", v.getErrors());
 
+        const { data: bf } = await ctx.supabase
+          .from("building_features")
+          .select("sla_accept_minutes")
+          .eq("building_id", body.building_id)
+          .maybeSingle();
+        const slaMin = bf?.sla_accept_minutes ?? 5;
+        const slaDeadline = new Date(Date.now() + slaMin * 60 * 1000).toISOString();
+
         const { data, error } = await ctx.supabase
           .from("quick_service_requests")
           .insert({
@@ -85,11 +93,18 @@ Deno.serve(async (req) => {
             resident_id: body.resident_id || null,
             scheduled_at: body.scheduled_at || null,
             status: "open",
+            app_status: "submitted",
+            priority_tier: body.priority_tier || "normal",
+            sla_accept_deadline: slaDeadline,
           })
           .select()
           .single();
 
         if (error) throw error;
+        await emitEvent(ctx, "life_request_created", {
+          request_id: data.id,
+          building_id: body.building_id,
+        });
         return success(data, 201);
       }
 
@@ -105,6 +120,14 @@ Deno.serve(async (req) => {
 
       if (!v.isValid()) return badRequest("Validation failed", v.getErrors());
 
+      const { data: bf } = await ctx.supabase
+        .from("building_features")
+        .select("sla_accept_minutes")
+        .eq("building_id", body.building_id)
+        .maybeSingle();
+      const slaMin = bf?.sla_accept_minutes ?? 5;
+      const slaDeadline = new Date(Date.now() + slaMin * 60 * 1000).toISOString();
+
       const { data, error } = await ctx.supabase
         .from("support_requests")
         .insert({
@@ -116,6 +139,9 @@ Deno.serve(async (req) => {
           priority: body.priority || "medium",
           resident_id: body.resident_id || null,
           status: "open",
+          app_status: "submitted",
+          priority_tier: body.priority_tier || (body.priority === "high" ? "high" : "normal"),
+          sla_accept_deadline: slaDeadline,
         })
         .select()
         .single();
@@ -151,6 +177,8 @@ Deno.serve(async (req) => {
       if (type === "quick" && body.assigned_to) updates.assigned_to = body.assigned_to;
       if (body.priority) updates.priority = body.priority;
       if (body.cost !== undefined) updates.cost = body.cost;
+      if (body.app_status) updates.app_status = body.app_status;
+      if (body.priority_tier) updates.priority_tier = body.priority_tier;
 
       const { data, error } = await ctx.supabase
         .from(table)

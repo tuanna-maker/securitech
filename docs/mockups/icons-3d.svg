@@ -1,0 +1,241 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <defs>
+    <filter id="drop" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.8" flood-color="#1e3066" flood-opacity="0.16"/>
+    </filter>
+    <filter id="drop-sm" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.4" flood-color="#1e3066" flood-opacity="0.14"/>
+    </filter>
+
+    <!-- Quick: Thành viên — xanh #4A89F3 ? #76A9F9 (?o t? mockup) -->
+    <linearGradient id="g-mb" x1="32" y1="58" x2="32" y2="6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3A75EB"/>
+      <stop offset="1" stop-color="#8BB5F5"/>
+    </linearGradient>
+    <symbol id="i-members" viewBox="0 0 64 64">
+      <ellipse cx="32" cy="57" rx="17" ry="3.5" fill="#1e3066" opacity="0.07"/>
+      <g filter="url(#drop)">
+        <circle cx="40" cy="21" r="9" fill="url(#g-mb)"/>
+        <path d="M31 48c0-4.2 3.2-7.5 9-7.5s9 3.3 9 7.5" fill="url(#g-mb)"/>
+        <circle cx="24" cy="19" r="11" fill="url(#g-mb)"/>
+        <path d="M11 50c0-6.5 5.8-11.5 13-11.5s13 5 13 11.5" fill="url(#g-mb)"/>
+        <ellipse cx="21" cy="14" rx="9" ry="4.5" fill="#fff" opacity="0.32"/>
+      </g>
+    </symbol>
+
+    <!-- Quick: L?ch — tím, 6 ch?m 2×3 -->
+    <linearGradient id="g-cal" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7A58D5"/>
+      <stop offset="1" stop-color="#B389F9"/>
+    </linearGradient>
+    <symbol id="i-calendar" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <rect x="15" y="20" width="34" height="34" rx="8" fill="url(#g-cal)"/>
+        <rect x="15" y="20" width="34" height="11" rx="8" fill="#6D28D9" opacity="0.35"/>
+        <rect x="21" y="11" width="5" height="11" rx="2.5" fill="url(#g-cal)"/>
+        <rect x="38" y="11" width="5" height="11" rx="2.5" fill="url(#g-cal)"/>
+        <circle cx="22" cy="36" r="2.4" fill="#fff"/>
+        <circle cx="32" cy="36" r="2.4" fill="#fff"/>
+        <circle cx="42" cy="36" r="2.4" fill="#fff"/>
+        <circle cx="22" cy="44" r="2.4" fill="#fff"/>
+        <circle cx="32" cy="44" r="2.4" fill="#fff"/>
+        <circle cx="42" cy="44" r="2.4" fill="#fff"/>
+        <ellipse cx="26" cy="22" rx="12" ry="4" fill="#fff" opacity="0.22"/>
+      </g>
+    </symbol>
+
+    <!-- Quick: K? ni?m — h?ng/??, ribbon + sao -->
+    <linearGradient id="g-mem" x1="32" y1="56" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E73558"/>
+      <stop offset="1" stop-color="#F9899B"/>
+    </linearGradient>
+    <symbol id="i-memories" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M22 9 H42 C45.5 9 48 11.5 48 15 V40 L32 54 L16 40 V15 C16 11.5 18.5 9 22 9 Z" fill="url(#g-mem)"/>
+        <path d="M22 9 H42 V16 H33 L30 12 H22 Z" fill="#fff" opacity="0.26"/>
+        <path d="M32 21 L34.2 26.2 L39.8 26.6 L35.2 30.2 L36.8 36 L32 33 L27.2 36 L28.8 30.2 L24.2 26.6 L29.8 26.2 Z" fill="#fff"/>
+        <ellipse cx="27" cy="13" rx="11" ry="5" fill="#fff" opacity="0.28"/>
+      </g>
+    </symbol>
+
+    <!-- Quick: Cài ??t — xanh lá, bánh r?ng 8 r?ng -->
+    <linearGradient id="g-set" x1="32" y1="58" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#86EFAC"/>
+    </linearGradient>
+    <symbol id="i-settings" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path fill="url(#g-set)" d="M32 11 L35.2 19.8 L44 18.2 L40.5 26.8 L48 28 L40.5 29.2 L44 37.8 L35.2 36.2 L32 45 L28.8 36.2 L20 37.8 L23.5 29.2 L16 28 L23.5 26.8 L20 18.2 L28.8 19.8 Z"/>
+        <circle cx="32" cy="28" r="6.5" fill="#fff" opacity="0.42"/>
+        <ellipse cx="25" cy="17" rx="13" ry="5" fill="#fff" opacity="0.24"/>
+      </g>
+    </symbol>
+
+    <!-- MGMT: Ví chi tiêu -->
+    <linearGradient id="g-wallet" x1="32" y1="54" x2="32" y2="12" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+    <symbol id="i-wallet" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <rect x="10" y="22" width="44" height="28" rx="9" fill="url(#g-wallet)"/>
+        <rect x="10" y="22" width="44" height="9" rx="9" fill="#93C5FD" opacity="0.55"/>
+        <path d="M10 30 H54" stroke="#1D4ED8" stroke-width="1" opacity="0.2"/>
+        <rect x="38" y="30" width="16" height="14" rx="7" fill="#FBBF24"/>
+        <circle cx="46" cy="37" r="4" fill="#FDE047"/>
+        <ellipse cx="22" cy="26" rx="14" ry="4" fill="#fff" opacity="0.22"/>
+      </g>
+    </symbol>
+
+    <!-- MGMT: Con — tím, m?t c??i -->
+    <linearGradient id="g-child" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#C4B5FD"/>
+    </linearGradient>
+    <symbol id="i-child" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <circle cx="32" cy="23" r="14" fill="url(#g-child)"/>
+        <path d="M14 52c0-8.5 8-14.5 18-14.5s18 6 18 14.5" fill="url(#g-child)"/>
+        <circle cx="26" cy="21" r="2.2" fill="#fff"/>
+        <circle cx="38" cy="21" r="2.2" fill="#fff"/>
+        <path d="M26 30 Q32 34.5 38 30" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="25" cy="17" rx="9" ry="4" fill="#fff" opacity="0.28"/>
+      </g>
+    </symbol>
+
+    <!-- MGMT: Th?c ph?m — cam, gi? -->
+    <linearGradient id="g-food" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#EA580C"/>
+      <stop offset="1" stop-color="#FDBA74"/>
+    </linearGradient>
+    <symbol id="i-food" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M18 24c0-5.5 6-9.5 14-9.5s14 4 14 9.5v3H18v-3z" fill="url(#g-food)"/>
+        <path d="M14 29h36l-2.5 18H16.5L14 29z" fill="url(#g-food)"/>
+        <path d="M22 32h20M20 38h24M22 44h20" stroke="#fff" stroke-width="1.6" opacity="0.35" stroke-linecap="round"/>
+        <path d="M16 22c3.5-5 9-7 16-7" stroke="url(#g-food)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        <path d="M48 22c-3.5-5-9-7-16-7" stroke="url(#g-food)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        <ellipse cx="28" cy="18" rx="10" ry="4" fill="#fff" opacity="0.22"/>
+      </g>
+    </symbol>
+
+    <!-- MGMT: S?c kh?e — tim + nh?p -->
+    <linearGradient id="g-health" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16A34A"/>
+      <stop offset="1" stop-color="#4ADE80"/>
+    </linearGradient>
+    <symbol id="i-health" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M32 52 C18 38 10 30 10 22 C10 14 16 10 22 10 C26 10 30 12 32 16 C34 12 38 10 42 10 C48 10 54 14 54 22 C54 30 46 38 32 52 Z" fill="url(#g-health)"/>
+        <path d="M14 30 H22 L26 22 L32 38 L38 24 L42 30 H50" stroke="#fff" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <ellipse cx="24" cy="15" rx="10" ry="5" fill="#fff" opacity="0.26"/>
+      </g>
+    </symbol>
+
+    <!-- D?ch v? -->
+    <linearGradient id="g-plane" x1="32" y1="54" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#7DD3FC"/>
+    </linearGradient>
+    <symbol id="i-plane" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M8 34 L34 14 L40 22 L56 12 L44 32 H36 L30 46 L24 36 H8 Z" fill="url(#g-plane)"/>
+        <path d="M14 28 L38 16" stroke="#fff" stroke-width="2" opacity="0.28" stroke-linecap="round"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-home" x1="32" y1="54" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0D9488"/>
+      <stop offset="1" stop-color="#5EEAD4"/>
+    </linearGradient>
+    <symbol id="i-home" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M12 30 L32 12 L52 30 V50 H12 Z" fill="url(#g-home)"/>
+        <rect x="26" y="36" width="12" height="14" rx="1.5" fill="#fff" opacity="0.32"/>
+        <circle cx="48" cy="40" r="5.5" fill="#0F766E"/>
+        <path d="M46 40 H50 M48 38 V42" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+        <ellipse cx="28" cy="22" rx="14" ry="5" fill="#fff" opacity="0.2"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-car" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#EA580C"/>
+      <stop offset="1" stop-color="#FB923C"/>
+    </linearGradient>
+    <symbol id="i-car" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M10 34 H54 L48 18 H16 L10 34 Z" fill="url(#g-car)"/>
+        <rect x="14" y="26" width="36" height="7" rx="2" fill="#fff" opacity="0.18"/>
+        <circle cx="20" cy="36" r="5.5" fill="#fff"/>
+        <circle cx="44" cy="36" r="5.5" fill="#fff"/>
+        <circle cx="20" cy="36" r="2.5" fill="#64748B"/>
+        <circle cx="44" cy="36" r="2.5" fill="#64748B"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-cart" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#C4B5FD"/>
+    </linearGradient>
+    <symbol id="i-cart" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M18 18 H14 L18 46 H46 L52 18 H22" fill="none" stroke="url(#g-cart)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M18 18 H14 L18 46 H46 L52 18 H22" fill="url(#g-cart)" opacity="0.95"/>
+        <circle cx="22" cy="50" r="3.2" fill="url(#g-cart)"/>
+        <circle cx="42" cy="50" r="3.2" fill="url(#g-cart)"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-crown" x1="32" y1="54" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#CA8A04"/>
+      <stop offset="1" stop-color="#FDE047"/>
+    </linearGradient>
+    <symbol id="i-crown" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <path d="M10 38 H54 L32 14 L24 26 L18 18 L12 26 L6 18 Z" fill="url(#g-crown)"/>
+        <rect x="14" y="38" width="36" height="8" rx="2" fill="url(#g-crown)"/>
+        <circle cx="18" cy="22" r="3.2" fill="#FBBF24"/>
+        <circle cx="32" cy="16" r="3.2" fill="#FBBF24"/>
+        <circle cx="46" cy="22" r="3.2" fill="#FBBF24"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-robot" x1="32" y1="54" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+    <symbol id="i-robot" viewBox="0 0 64 64">
+      <g filter="url(#drop)">
+        <rect x="14" y="20" width="36" height="28" rx="12" fill="url(#g-robot)"/>
+        <rect x="26" y="11" width="12" height="11" rx="4" fill="url(#g-robot)"/>
+        <circle cx="24" cy="32" r="3.5" fill="#fff"/>
+        <circle cx="40" cy="32" r="3.5" fill="#fff"/>
+        <rect x="22" y="40" width="20" height="3" rx="1.5" fill="#fff" opacity="0.45"/>
+        <ellipse cx="28" cy="24" rx="10" ry="4" fill="#fff" opacity="0.2"/>
+      </g>
+    </symbol>
+
+    <symbol id="i-pill" viewBox="0 0 64 64">
+      <g filter="url(#drop-sm)">
+        <rect x="16" y="30" width="32" height="12" rx="6" fill="#F472B6" transform="rotate(-32 32 36)"/>
+        <rect x="22" y="20" width="14" height="14" rx="7" fill="#EC4899" transform="rotate(-32 29 27)"/>
+      </g>
+    </symbol>
+
+    <symbol id="i-clinic" viewBox="0 0 64 64">
+      <g filter="url(#drop-sm)">
+        <rect x="16" y="22" width="32" height="26" rx="5" fill="#8B5CF6"/>
+        <path d="M30 28 V42 M24 35 H36" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </symbol>
+
+    <linearGradient id="g-brand" x1="32" y1="64" x2="32" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E3066"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <symbol id="i-brand" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="14" fill="url(#g-brand)"/>
+      <path d="M32 12 L36 24 H48 L38 32 L42 48 L32 40 L22 48 L26 32 L16 24 H28 Z" fill="#fff" opacity="0.95"/>
+    </symbol>
+  </defs>
+</svg>

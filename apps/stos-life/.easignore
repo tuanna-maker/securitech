@@ -1,0 +1,5 @@
+ios/Pods/
+ios/build/
+**/DerivedData/
+.expo/
+node_modules/.cache/

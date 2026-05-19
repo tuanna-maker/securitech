@@ -54,11 +54,13 @@ export function useDeleteBuilding() {
 
 // Derived stats hook
 export function useBuildingStats() {
-  const { data, isLoading } = useBuildings({ limit: 1000 });
+  const { data, isLoading, refetch, isRefetching } = useBuildings({ limit: 1000 });
   const buildings = data?.data ?? [];
 
   return {
     isLoading,
+    refetch,
+    isRefetching,
     total: buildings.length,
     critical: buildings.filter((b) => b.status === "critical").length,
     warning: buildings.filter((b) => b.status === "warning").length,

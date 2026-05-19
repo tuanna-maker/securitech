@@ -1,17 +1,19 @@
 import { Tabs, Redirect } from "expo-router";
+import { Platform, StyleSheet } from "react-native";
+import { BlurView } from "expo-blur";
+import { Ionicons } from "@expo/vector-icons";
 import { useAuth } from "../../hooks/useAuth";
 import { useTheme } from "../../hooks/useTheme";
-import { Text } from "react-native";
 
-function TabLabel({ title, focused, color }: { title: string; focused: boolean; color: string }) {
-  return (
-    <Text style={{ fontSize: 11, fontWeight: focused ? "700" : "500", color }}>{title}</Text>
-  );
+type TabIcon = keyof typeof Ionicons.glyphMap;
+
+function TabIcon({ name, color, focused }: { name: TabIcon; color: string; focused: boolean }) {
+  return <Ionicons name={focused ? name : (`${name}-outline` as TabIcon)} size={24} color={color} />;
 }
 
 export default function TabsLayout() {
   const { user, loading } = useAuth();
-  const { colors } = useTheme();
+  const { colors, isDark } = useTheme();
 
   if (!loading && !user) return <Redirect href="/login" />;
 
@@ -19,44 +21,72 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.secondary,
-        tabBarInactiveTintColor: colors.textSecondary,
+        tabBarActiveTintColor: colors.tint,
+        tabBarInactiveTintColor: colors.textTertiary,
+        tabBarLabelStyle: styles.tabLabel,
         tabBarStyle: {
-          backgroundColor: colors.card,
-          borderTopColor: colors.border,
-          height: 60,
-          paddingBottom: 8,
+          position: Platform.OS === "ios" ? "absolute" : undefined,
+          backgroundColor: Platform.OS === "ios" ? "transparent" : colors.tabBar,
+          borderTopColor: colors.separator,
+          borderTopWidth: Platform.OS === "ios" ? StyleSheet.hairlineWidth : 1,
+          height: Platform.OS === "ios" ? 88 : 64,
+          paddingBottom: Platform.OS === "ios" ? 28 : 8,
+          paddingTop: 8,
         },
+        tabBarBackground: () =>
+          Platform.OS === "ios" ? (
+            <BlurView
+              intensity={80}
+              tint={isDark ? "dark" : "light"}
+              style={StyleSheet.absoluteFill}
+            />
+          ) : undefined,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: "Tổng quan",
-          tabBarLabel: ({ focused, color }) => <TabLabel title="Tổng quan" focused={focused} color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon name="grid" color={color} focused={focused} />
+          ),
         }}
       />
       <Tabs.Screen
         name="buildings"
         options={{
           title: "Tòa nhà",
-          tabBarLabel: ({ focused, color }) => <TabLabel title="Tòa nhà" focused={focused} color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon name="business" color={color} focused={focused} />
+          ),
         }}
       />
       <Tabs.Screen
         name="incidents"
         options={{
           title: "Sự cố",
-          tabBarLabel: ({ focused, color }) => <TabLabel title="Sự cố" focused={focused} color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon name="warning" color={color} focused={focused} />
+          ),
         }}
       />
       <Tabs.Screen
         name="more"
         options={{
           title: "Thêm",
-          tabBarLabel: ({ focused, color }) => <TabLabel title="Thêm" focused={focused} color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon name="ellipsis-horizontal" color={color} focused={focused} />
+          ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  tabLabel: {
+    fontSize: 10,
+    fontWeight: "500",
+    marginTop: 2,
+  },
+});

@@ -16,6 +16,7 @@ export interface BuildingRow {
   critical_incidents: number;
   patrol_completion: number;
   sla_percent: number;
+  cover_image_url?: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -105,9 +106,12 @@ export async function createBuilding(input: CreateBuildingInput): Promise<Buildi
   return data as BuildingRow;
 }
 
-export async function updateBuilding(id: string, input: Partial<CreateBuildingInput>): Promise<BuildingRow> {
+export async function updateBuilding(
+  id: string,
+  input: Partial<CreateBuildingInput> & { cover_image_url?: string | null }
+): Promise<BuildingRow> {
   const updates: Record<string, unknown> = {};
-  const fields = ["name", "address", "region", "management_company", "status", "lat", "lng", "staff_total"];
+  const fields = ["name", "address", "region", "management_company", "status", "lat", "lng", "staff_total", "cover_image_url"];
   for (const f of fields) {
     if ((input as any)[f] !== undefined) updates[f] = (input as any)[f];
   }
