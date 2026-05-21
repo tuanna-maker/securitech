@@ -1,5 +1,4 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import { router } from "expo-router";
 import { StosIcon, type StosIconName } from "@stos/mobile-shared";
 import { Screen } from "../../components/ui/Screen";
 import { LifeHeader } from "../../components/life/LifeHeader";
@@ -21,7 +20,7 @@ const BOTTOM_ACTIONS: { label: string; icon: StosIconName }[] = [
 ];
 
 export default function FamilySpendingScreen() {
-  const { colors, isDark } = useTheme();
+  const { colors, life, isDark } = useTheme();
   const { data } = useFamilySpending();
   const SPENDING = data ?? getFamilySpendingFallback();
   const aiBg = isDark ? "rgba(124, 58, 237, 0.12)" : "#FAF5FF";
@@ -29,20 +28,14 @@ export default function FamilySpendingScreen() {
 
   return (
     <Screen title="" largeTitle={false} scroll>
-      <LifeHeader
-        mode="minimal"
-        title="Chi tiêu gia đình"
-        notifyCount={3}
-        onBack={() => router.back()}
-        rightIcons={["search", "calendar"]}
-      />
+      <LifeHeader mode="minimal" title="Chi tiêu gia đình" notifyCount={3} rightIcons={["search", "calendar"]} />
 
       <Pressable style={[styles.monthPicker, { backgroundColor: colors.fill, borderColor: colors.border }]}>
         <Text style={[textStyle("subhead", "semibold"), { color: colors.text }]}>{SPENDING.month}</Text>
         <StosIcon name="chevron-down" size={18} color={colors.textSecondary} />
       </Pressable>
 
-      <MockCard style={{ marginBottom: spacing.lg }}>
+      <MockCard style={{ marginBottom: spacing.lg, backgroundColor: life.bgCard, borderColor: life.border }}>
         <View style={styles.summaryTop}>
           <View style={styles.flex}>
             <View style={styles.totalRow}>

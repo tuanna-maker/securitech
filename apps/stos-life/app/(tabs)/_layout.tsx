@@ -1,30 +1,31 @@
 import { Tabs } from "expo-router";
 import { Platform, StyleSheet } from "react-native";
 import { BlurView } from "expo-blur";
-import { StosTabIcon } from "@stos/mobile-shared";
+import { StosIcon, StosTabIcon } from "@stos/mobile-shared";
 import { useTheme } from "../../hooks/useTheme";
 
 export default function TabLayout() {
-  const { colors, isDark } = useTheme();
+  const { colors, life, isDark } = useTheme();
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.tint,
-        tabBarInactiveTintColor: colors.textTertiary,
-        tabBarLabelStyle: { fontSize: 10, fontWeight: "600" },
+        tabBarActiveTintColor: life.navActive,
+        tabBarInactiveTintColor: life.navInactive,
+        tabBarLabelStyle: { fontSize: 11, fontWeight: "600" },
         tabBarStyle: {
           position: "absolute",
           borderTopWidth: StyleSheet.hairlineWidth,
-          borderTopColor: colors.border,
-          backgroundColor: isDark ? "rgba(11, 14, 20, 0.96)" : "rgba(255, 255, 255, 0.96)",
-          height: Platform.OS === "ios" ? 88 : 64,
-          paddingTop: 6,
+          borderTopColor: life.border,
+          backgroundColor: life.navBg,
+          height: Platform.OS === "ios" ? 88 : 68,
+          paddingTop: 10,
+          paddingBottom: Platform.OS === "ios" ? 20 : 10,
         },
         tabBarBackground: () =>
           Platform.OS === "ios" ? (
-            <BlurView intensity={isDark ? 60 : 90} tint={isDark ? "dark" : "light"} style={{ flex: 1 }} />
+            <BlurView intensity={isDark ? 50 : 80} tint={isDark ? "dark" : "light"} style={{ flex: 1 }} />
           ) : undefined,
       }}
     >
@@ -36,24 +37,24 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="family"
+        name="spending"
         options={{
-          title: "Gia đình tôi",
-          tabBarIcon: ({ color, size }) => <StosTabIcon name="tab-family" color={color} size={size} />,
+          title: "Chi tiêu",
+          tabBarIcon: ({ color }) => <StosIcon name="wallet" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="security"
         options={{
-          title: "Dịch vụ",
+          title: "Dịch vụ bảo an",
           tabBarIcon: ({ color, size }) => <StosTabIcon name="tab-shield" color={color} size={size} />,
         }}
       />
       <Tabs.Screen
-        name="community"
+        name="health"
         options={{
-          title: "Cộng đồng",
-          tabBarIcon: ({ color, size }) => <StosTabIcon name="tab-community" color={color} size={size} />,
+          title: "Sức khỏe",
+          tabBarIcon: ({ color, size }) => <StosTabIcon name="tab-health" color={color} size={size ?? 24} />,
         }}
       />
       <Tabs.Screen
@@ -63,7 +64,8 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => <StosTabIcon name="tab-account" color={color} size={size} />,
         }}
       />
-      <Tabs.Screen name="health" options={{ href: null }} />
+      <Tabs.Screen name="family" options={{ href: null }} />
+      <Tabs.Screen name="community" options={{ href: null }} />
       <Tabs.Screen name="history" options={{ href: null }} />
     </Tabs>
   );

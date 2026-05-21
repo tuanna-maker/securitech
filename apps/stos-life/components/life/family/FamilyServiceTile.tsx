@@ -1,41 +1,40 @@
-import { View, Text, Pressable, StyleSheet, Platform } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { LifeGradientIcon, type LifeGradientIconName } from "./LifeGradientIcon";
 import { useTheme } from "../../../hooks/useTheme";
-import { textStyle } from "../../../lib/design";
+import { cardShadow } from "../../../lib/design";
 
 export function FamilyServiceTile({ label, icon, onPress }: { label: string; icon: LifeGradientIconName; onPress: () => void }) {
-  const { colors, isDark } = useTheme();
+  const { life, isDark } = useTheme();
 
   return (
     <Pressable onPress={onPress} style={styles.col}>
-      <View style={[styles.box, { backgroundColor: isDark ? colors.card : "#fff", borderColor: colors.border }, shadow(isDark)]}>
-        <LifeGradientIcon name={icon} size={36} />
+      <View
+        style={[
+          styles.box,
+          { backgroundColor: life.bgCard, borderColor: life.border },
+          cardShadow(isDark),
+        ]}
+      >
+        <LifeGradientIcon name={icon} size={30} />
       </View>
-      <Text style={[textStyle("caption2"), styles.label, { color: colors.text }]} numberOfLines={2}>
+      <Text style={[styles.label, { color: life.textSub }]} numberOfLines={2}>
         {label}
       </Text>
     </Pressable>
   );
 }
 
-function shadow(isDark: boolean) {
-  return Platform.select({
-    ios: { shadowColor: "#000", shadowOffset: { width: 0, height: 3 }, shadowOpacity: isDark ? 0.3 : 0.1, shadowRadius: 8 },
-    android: { elevation: 3 },
-    default: {},
-  });
-}
-
 const styles = StyleSheet.create({
   col: { width: 72, alignItems: "center" },
   box: {
-    width: 64,
-    height: 64,
-    borderRadius: 16,
-    borderWidth: 1,
+    width: 72,
+    borderRadius: 18,
+    borderWidth: 1.5,
     alignItems: "center",
     justifyContent: "center",
+    paddingVertical: 14,
+    paddingHorizontal: 6,
     marginBottom: 8,
   },
-  label: { textAlign: "center", lineHeight: 14 },
+  label: { fontSize: 11.5, lineHeight: 15, fontWeight: "500", textAlign: "center" },
 });

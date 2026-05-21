@@ -21,7 +21,7 @@ import { radii, spacing, textStyle } from "../../lib/design";
 export default function SecurityScreen() {
   const { resident } = useAuth();
   useLifeRealtime("security");
-  const { colors, isDark } = useTheme();
+  const { colors, life, isDark } = useTheme();
 
   const { data: activeReq } = useQuery({
     queryKey: ["active-request", resident?.id],
@@ -61,33 +61,26 @@ export default function SecurityScreen() {
         showProfileMenu
       />
 
-      <LinearGradient colors={["#EFF6FF", "#DBEAFE", "#E0E7FF"]} style={styles.hero}>
-        <View style={styles.heroInner}>
-          <View style={[styles.heroShield, { backgroundColor: brand.navy }]}>
-            <StosIcon name="shield-grab" size={36} color="#fff" />
-          </View>
-          <View style={styles.heroCenter}>
-            <Text style={[textStyle("subhead", "semibold"), { color: brand.navy }]}>Bảo vệ gia đình bạn</Text>
-            <Text style={[textStyle("largeTitle", "bold"), { color: brand.navy, fontSize: 32 }]}>24/7</Text>
-            <Text style={[textStyle("caption1"), { color: "#475569", marginTop: 4 }]}>
-              Đội ngũ chuyên nghiệp – Công nghệ hiện đại.{"\n"}Luôn sẵn sàng hỗ trợ
-            </Text>
-            <View style={styles.heroTags}>
-              {[
-                { icon: "check-circle" as StosIconName, label: "An toàn", c: "#16A34A" },
-                { icon: "lightning" as StosIconName, label: "Nhanh chóng", c: "#2563EB" },
-                { icon: "heart" as StosIconName, label: "Tin cậy", c: "#7C3AED" },
-              ].map((t) => (
-                <View key={t.label} style={styles.tag}>
-                  <StosIcon name={t.icon} size={13} color={t.c} />
-                  <Text style={[textStyle("caption2"), { color: "#64748B" }]}>{t.label}</Text>
-                </View>
-              ))}
-            </View>
-          </View>
-          <View style={styles.heroPhoto}>
-            <StosIcon name="people" size={48} color={brand.navy} />
-          </View>
+      <LinearGradient
+        colors={isDark ? ["#1e3a8a", "#0f172a"] : ["#1e3a8a", "#2563eb"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.secHero}
+      >
+        <View style={styles.shBadge}>
+          <Text style={styles.shBadgeText}>🛡️ Bảo vệ gia đình bạn</Text>
+        </View>
+        <Text style={styles.shTitle}>24/7</Text>
+        <Text style={styles.shSub}>
+          Đội ngũ chuyên nghiệp - Công nghệ hiện đại{"\n"}Luôn sẵn sàng hỗ trợ
+        </Text>
+        <View style={styles.shTags}>
+          <Text style={styles.shTag}>✓ An toàn</Text>
+          <Text style={styles.shTag}>⚡ Nhanh chóng</Text>
+          <Text style={styles.shTag}>♡ Tin cậy</Text>
+        </View>
+        <View style={styles.shShieldArt}>
+          <StosIcon name="shield-grab" size={72} color="rgba(96,165,250,0.85)" />
         </View>
       </LinearGradient>
 
@@ -108,16 +101,16 @@ export default function SecurityScreen() {
       </ScrollView>
 
       <SectionTitle title="TÌNH HÌNH AN NINH" link="Xem chi tiết >" onLink={() => openLifeFeature("Chi tiết an ninh")} />
-      <MockCard style={[styles.safeBanner, { backgroundColor: isDark ? "rgba(34, 197, 94, 0.12)" : "#DCFCE7" }]}>
-        <StosIcon name="shield-badge" size={32} color="#16A34A" />
+      <View style={[styles.safeBanner, { backgroundColor: life.greenPillBg, borderColor: "rgba(39,174,96,0.2)" }]}>
+        <Text style={{ fontSize: 24 }}>🛡️</Text>
         <View style={styles.flex}>
-          <Text style={[textStyle("subhead", "semibold"), { color: "#14532D" }]}>Khu vực của bạn đang an toàn</Text>
-          <Text style={[textStyle("caption2"), { color: "#166534" }]}>Không có cảnh báo an ninh trong 24 giờ qua</Text>
+          <Text style={[textStyle("subhead", "bold"), { color: life.success }]}>Khu vực của bạn đang an toàn</Text>
+          <Text style={[textStyle("caption2"), { color: life.textSub }]}>Không có cảnh báo an ninh trong 24 giờ qua</Text>
         </View>
-        <View style={styles.safePill}>
-          <Text style={{ fontSize: 11, fontWeight: "700", color: "#16A34A" }}>An toàn</Text>
+        <View style={[styles.safePill, { backgroundColor: life.greenPillBg }]}>
+          <Text style={{ fontSize: 11, fontWeight: "700", color: life.success }}>An toàn</Text>
         </View>
-      </MockCard>
+      </View>
 
       <View style={styles.statsRow}>
         {[
@@ -183,20 +176,29 @@ export default function SecurityScreen() {
 }
 
 const styles = StyleSheet.create({
-  hero: { borderRadius: 20, padding: spacing.lg, marginBottom: spacing.lg },
-  heroInner: { flexDirection: "row", alignItems: "flex-start", gap: spacing.md },
-  heroShield: { width: 56, height: 56, borderRadius: 16, alignItems: "center", justifyContent: "center" },
-  heroCenter: { flex: 1 },
-  heroTags: { flexDirection: "row", flexWrap: "wrap", gap: 12, marginTop: 10 },
-  tag: { flexDirection: "row", alignItems: "center", gap: 4 },
-  heroPhoto: {
-    width: 72,
-    height: 72,
-    borderRadius: 12,
-    backgroundColor: "rgba(255,255,255,0.7)",
-    alignItems: "center",
-    justifyContent: "center",
+  secHero: {
+    borderRadius: 24,
+    padding: 20,
+    marginBottom: spacing.lg,
+    overflow: "hidden",
+    minHeight: 160,
   },
+  shBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    backgroundColor: "rgba(255,255,255,0.2)",
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 8,
+    marginBottom: 12,
+  },
+  shBadgeText: { fontSize: 11, fontWeight: "700", color: "#fff" },
+  shTitle: { fontSize: 22, fontWeight: "800", color: "#fff", marginBottom: 8 },
+  shSub: { fontSize: 12, color: "#cbd5e1", lineHeight: 18, maxWidth: "70%" },
+  shTags: { flexDirection: "row", gap: 12, marginTop: 16 },
+  shTag: { fontSize: 11, fontWeight: "600", color: "#60a5fa" },
+  shShieldArt: { position: "absolute", right: -8, bottom: -10, opacity: 0.85 },
   quickRow: { gap: 16, paddingBottom: spacing.md },
   quickCol: { width: 76, alignItems: "center", gap: 4 },
   quickCircle: {
@@ -212,9 +214,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: spacing.md,
     marginBottom: spacing.md,
+    borderRadius: 16,
+    padding: 12,
+    borderWidth: 1,
   },
   flex: { flex: 1 },
-  safePill: { backgroundColor: "#fff", paddingHorizontal: 10, paddingVertical: 5, borderRadius: radii.pill },
+  safePill: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 12 },
   statsRow: { flexDirection: "row", gap: 8, marginBottom: spacing.sm },
   statCard: { flex: 1, alignItems: "center", gap: 4 },
   statIcon: { width: 32, height: 32, borderRadius: 10, alignItems: "center", justifyContent: "center" },
